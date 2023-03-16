@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import Categories from "./Pages/Categories";
 import WorkersInfo from "./Pages/WorkersInfo";
 import { Routes, Route } from 'react-router-dom'
+import Workerside from "./workerside/Workerside";
 
 function App() {
   return (
@@ -19,9 +20,15 @@ function App() {
           <Categories />
         </div>
         } />
+        <Route exact path="/dashboard" element={
+          <div  style={{overflowX:"hidden"}}>
+          <Workerside />
+        </div>
+        } />
       </Routes>
     </div>
   );
+      
 }
 
 export default App;
