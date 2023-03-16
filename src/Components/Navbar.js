@@ -52,60 +52,60 @@ const Navbar = (props) => {
                                     <Row>
                                         <Col md={4}>
                                             <h5 className="font-size-14 mt-0">
-                                                UI Components
+                                                House Hold Services
                                             </h5>
                                             <ul className="list-unstyled megamenu-list">
                                                 <li>
-                                                    Lightbox
+                                                    Carpenter
                                                 </li>
                                                 <li>
-                                                    Range Slider
+                                                    Painter
                                                 </li>
                                                 <li>
-                                                    Sweet Alert
+                                                    Electrician
                                                 </li>
                                                 <li>
-                                                    Rating
+                                                    Plumber
                                                 </li>
                                             </ul>
                                         </Col>
 
                                         <Col md={4}>
                                             <h5 className="font-size-14 mt-0">
-                                                Applications
+                                                Dentist
                                             </h5>
                                             <ul className="list-unstyled megamenu-list">
                                                 <li>
-                                                    Lightbox
+                                                Contractors
                                                 </li>
                                                 <li>
-                                                    Range Slider
+                                                Courier service
                                                 </li>
                                                 <li>
-                                                    Sweet Alert
+                                                Mechanic
                                                 </li>
                                                 <li>
-                                                    Rating
+                                                Home decor
                                                 </li>
                                             </ul>
                                         </Col>
 
                                         <Col md={4}>
                                             <h5 className="font-size-14 mt-0">
-                                                Extra Pages
+                                            Rent and hire
                                             </h5>
                                             <ul className="list-unstyled megamenu-list">
                                                 <li>
-                                                    Lightbox
+                                                Gym 
                                                 </li>
                                                 <li>
-                                                    Range Slider
+                                                Body massage
                                                 </li>
                                                 <li>
-                                                    Sweet Alert
+                                                Photographers
                                                 </li>
                                                 <li>
-                                                    Rating
+                                                Real estate
                                                 </li>
                                             </ul>
                                         </Col>
@@ -115,20 +115,20 @@ const Navbar = (props) => {
                                     <Row>
                                         <Col sm={6}>
                                             <h5 className="font-size-14 mt-0">
-                                ``                UI Components
+                                               Carpenter
                                             </h5>
                                             <ul className="list-unstyled megamenu-list">
                                                 <li>
-                                                    Lightbox
+                                                    Electrician
                                                 </li>
                                                 <li>
-                                                    Range Slider
+                                                    Mechanic
                                                 </li>
                                                 <li>
-                                                    Sweet Alert
+                                                    Plumber
                                                 </li>
                                                 <li>
-                                                    Rating
+                                                    Watchman
                                                 </li>
                                             </ul>
                                         </Col>

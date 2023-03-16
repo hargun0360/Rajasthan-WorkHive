@@ -17,18 +17,18 @@ import { Row } from 'reactstrap'
 const Categories = () => {
   return (
     <Row>
-        <CardShop Image = {driver} name = "Driver" worker = "15" expected = "1200" />
-        <CardShop Image = {carpenter} name = "Carpenter" worker = "15" expected = "1200" />
-        <CardShop Image = {catering} name = "Catering" worker = "15" expected = "1200" />
-        <CardShop Image = {deliveyMan} name = "Delivery Man" worker = "15" expected = "1200" />
-        <CardShop Image = {deliveryTruck} name = "Delivery Truck" worker = "15" expected = "1200" />
-        <CardShop Image = {electrician} name = "Electrician" worker = "15" expected = "1200" />
-        <CardShop Image = {maid} name = "Maid" worker = "15" expected = "1200" />
-        <CardShop Image = {massage} name = "Massage" worker = "15" expected = "1200" />
-        <CardShop Image = {painter} name = "Painter" worker = "15" expected = "1200" />
-        <CardShop Image = {photographer} name = "Photographer" worker = "15" expected = "1200" />
-        <CardShop Image = {plumber} name = "Plumber" worker = "15" expected = "1200" />
-        <CardShop Image = {rent} name = "Rent" worker = "15" expected = "1200" />
+        <CardShop Image = {driver} name = "Driver" worker = "15" expected = "₹1200" />
+        <CardShop Image = {carpenter} name = "Mistri" worker = "15" expected = "₹1200" />
+        <CardShop Image = {catering} name = "Catering" worker = "15" expected = "₹1200" />
+        <CardShop Image = {deliveyMan} name = "Delivery Man" worker = "15" expected = "₹1200" />
+        <CardShop Image = {deliveryTruck} name = "Delivery Truck" worker = "15" expected = "₹1200" />
+        <CardShop Image = {electrician} name = "Electrician" worker = "15" expected = "₹1200" />
+        <CardShop Image = {maid} name = "Maid" worker = "15" expected = "₹1200" />
+        <CardShop Image = {massage} name = "Massage" worker = "15" expected = "₹1200" />
+        <CardShop Image = {painter} name = "Painter" worker = "15" expected = "₹1200" />
+        <CardShop Image = {photographer} name = "Photographer" worker = "15" expected = "₹1200" />
+        <CardShop Image = {plumber} name = "Plumber" worker = "15" expected = "₹1200" />
+        <CardShop Image = {rent} name = "Rent" worker = "15" expected = "₹1200" />
     </Row>
   )
 }

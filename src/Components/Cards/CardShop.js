@@ -10,13 +10,13 @@ const CardShop = props => {
   return (
     <React.Fragment>
       <Col xl="3" sm="6">
-        <Card>
+        <Card className="rounded shadow-lg p-3 mb-5 bg-white rounded">
           <Row>
             <Col xl="4">
               <div className="text-center p-4 border-end">
                 <div className="avatar-lg mx-auto mb-3 mt-1">
                  
-                    <img src={imgsrc} style={{width:"90px" , height:"100px"}}></img>
+                    <img src={imgsrc} className="mt-4" style={{width:"50px" , height:"50px"}}></img>
                  
                 </div>
               </div>
@@ -46,7 +46,7 @@ const CardShop = props => {
                   </Col>
                 </Row>
                 <div className="mt-2">
-                  <Link to="#" className="text-decoration-underline text-reset">More info <i className="mdi mdi-arrow-right"></i></Link>
+                  <Link to="/worker" className="text-decoration-underline text-reset">More info <i className="mdi mdi-arrow-right"></i></Link>
                 </div>
               </div>
             </Col>

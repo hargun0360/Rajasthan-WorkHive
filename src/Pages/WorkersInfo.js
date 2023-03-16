@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {
+    Button,
   Card,
   CardBody,
   CardTitle,
@@ -60,6 +61,7 @@ const EcommerceProducts = props => {
     { id: 4, name: "Jackets", link: "#" },
   ])
 
+  const navigate = useNavigate();
   const [productList, setProductList] = useState([{
     image : product1,
     name : "Prem Narayan",
@@ -164,7 +166,7 @@ const EcommerceProducts = props => {
   on change rating checkbox method
   */
   const onChangeRating = value => {
-    setProductList(productsData.filter(product => product.rating >= value))
+    setProductList(productList.filter(product => product.rating >= value))
 
     var modifiedRating = [...ratingvalues]
     modifiedRating.push(value)
@@ -172,7 +174,7 @@ const EcommerceProducts = props => {
   }
 
   const onSelectRating = value => {
-    setProductList(productsData.filter(product => product.rating === value))
+    setProductList(productList.filter(product => product.rating === value))
   }
 
   const onUncheckMark = (value) => {
@@ -185,13 +187,13 @@ const EcommerceProducts = props => {
     if (modifiedData && modifiedData.length && value !== 1) {
       var minValue = Math.min(...modifiedData)
       if (minValue && minValue !== Infinity) {
-        filteredProducts = productsData.filter(
+        filteredProducts = productList.filter(
           product => product.rating >= minValue
         )
         setRatingvalues(modifiedData)
       }
     } else {
-      filteredProducts = productsData
+      filteredProducts = productList
     }
     setProductList(filteredProducts)
   }
@@ -317,7 +319,7 @@ const EcommerceProducts = props => {
               <Row className="mb-3">
                 <Col xl="4" sm="6">
                   <div className="mt-2">
-                    <h5>Carpenter</h5>
+                    <h5>Mistri</h5>
                   </div>
                 </Col>
                 
@@ -335,13 +337,6 @@ const EcommerceProducts = props => {
                       >
                         <CardBody>
                           <div className="product-img position-relative">
-                            {product.isOffer ? (
-                              <div className="avatar-sm product-ribbon">
-                                <span className="avatar-title rounded-circle bg-primary">
-                                  {`-${product.offer}%`}
-                                </span>
-                              </div>
-                            ) : null}
 
                             <img
                               src={product.image}
@@ -374,42 +369,20 @@ const EcommerceProducts = props => {
                               <b>₹{product.newPrice}</b>
                             </h5>
                           </div>
+
+                          <div className="text-center mt-3 ">
+                            <Button onClick={() => {
+                                navigate("/jaib")
+                            }}>
+                                View Profile
+                            </Button>
+                          </div>
+                          
                         </CardBody>
                       </Card>
                     </Col>
                   ))}
-              </Row>
-
-              <Row>
-                <Col lg="12">
-                  <Pagination className="pagination pagination-rounded justify-content-end mb-2">
-                    <PaginationItem disabled={page === 1}>
-                      <PaginationLink
-                        previous
-                        href="#"
-                        onClick={() => handlePageClick(page - 1)}
-                      />
-                    </PaginationItem>
-                    {map(Array(totalPage), (item, i) => (
-                      <PaginationItem active={i + 1 === page} key={i}>
-                        <PaginationLink
-                          onClick={() => handlePageClick(i + 1)}
-                          href="#"
-                        >
-                          {i + 1}
-                        </PaginationLink>
-                      </PaginationItem>
-                    ))}
-                    <PaginationItem disabled={page === totalPage}>
-                      <PaginationLink
-                        next
-                        href="#"
-                        onClick={() => handlePageClick(page + 1)}
-                      />
-                    </PaginationItem>
-                  </Pagination>
-                </Col>
-              </Row>
+              </Row>    
             </Col>
           </Row>
         </Container>
