@@ -115,7 +115,7 @@ const Navbar = (props) => {
                                     <Row>
                                         <Col sm={6}>
                                             <h5 className="font-size-14 mt-0">
-                                                UI Components
+                                ``                UI Components
                                             </h5>
                                             <ul className="list-unstyled megamenu-list">
                                                 <li>
