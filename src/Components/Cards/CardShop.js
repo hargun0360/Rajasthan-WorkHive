@@ -46,7 +46,7 @@ const CardShop = props => {
                   </Col>
                 </Row>
                 <div className="mt-2">
-                  <Link to="#" className="text-decoration-underline text-reset">See Profile <i className="mdi mdi-arrow-right"></i></Link>
+                  <Link to="#" className="text-decoration-underline text-reset">More info <i className="mdi mdi-arrow-right"></i></Link>
                 </div>
               </div>
             </Col>

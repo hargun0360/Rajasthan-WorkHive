@@ -10,7 +10,7 @@ import Layout from "./layout/reducer"
 // import Profile from "./auth/profile/reducer"
 
 //E-commerce
-// import ecommerce from "./e-commerce/reducer"
+import ecommerce from "./e-commerce/reducer"
 
 //Calendar
 // import calendar from "./calendar/reducer"

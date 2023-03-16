@@ -6,7 +6,7 @@ import { all, fork } from "redux-saga/effects"
 // import ForgetSaga from "./auth/forgetpwd/saga"
 // import ProfileSaga from "./auth/profile/saga"
 import LayoutSaga from "./layout/saga";
-// import ecommerceSaga from "./e-commerce/saga"
+import ecommerceSaga from "./e-commerce/saga"
 // import calendarSaga from "./calendar/saga"
 // import chatSaga from "./chat/saga"
 // import cryptoSaga from "./crypto/saga"
@@ -26,7 +26,7 @@ export default function* rootSaga() {
     // fork(ForgetSaga),
     // fork(ProfileSaga),
     fork(LayoutSaga),
-    // fork(ecommerceSaga),
+    fork(ecommerceSaga),
     // fork(calendarSaga),
     // fork(chatSaga),
     // fork(mailsSaga),
