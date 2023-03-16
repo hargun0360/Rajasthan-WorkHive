@@ -2,6 +2,7 @@ import "./App.css"
 import Navbar from "./Components/Navbar";
 import Categories from "./Pages/Categories";
 import WorkersInfo from "./Pages/WorkersInfo";
+import Workerside from "./workerside/Workerside";
 
 function App() {
   return (
@@ -10,8 +11,7 @@ function App() {
     <div className="" style={{overflowX:"hidden"}}>
        <WorkersInfo />
         </div>
-    </div>
-  );
+      </div>)
 }
 
 export default App;
