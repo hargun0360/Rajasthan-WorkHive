@@ -9,12 +9,12 @@ const CardShop = props => {
  
   return (
     <React.Fragment>
-      <Col xl="3" sm="6">
-        <Card className="rounded shadow-lg p-3 mb-5 bg-white rounded">
+      <Col xl="3" sm="6" style={{padding:"0px 0px"}}>
+        <Card className="shadow-lg px-1 mx-4 bg-white" style={{border:"1px solid transparent" , borderRadius:"9px" , width:"87%"}}>
           <Row>
             <Col xl="4">
-              <div className="text-center p-4 border-end">
-                <div className="avatar-lg mx-auto mb-3 mt-1">
+              <div className="text-center mt-3 border-end">
+                <div className="avatar-lg mx-auto mb-1 mt-4">
                  
                     <img src={imgsrc} className="mt-4" style={{width:"50px" , height:"50px"}}></img>
                  
@@ -22,21 +22,21 @@ const CardShop = props => {
               </div>
             </Col>
 
-            <Col xl="8">
-              <div className="p-4 text-center text-xl-start">
+            <Col xl="7">
+              <div className="p-2 mt-2 text-center text-xl-start">
                 <Row>
                 <Row >
                     <div>
                       <h5 className="text-muted mb-2 text-truncate">{props.name}</h5>
                     </div>
                   </Row>
-                  <Col xs="5">
+                  <Col xs="5" className="p-0">
                     <div>
-                      <p className="text-muted mb-2 text-truncate">Workers</p>
+                      <p className="text-muted mb-2 text-truncate p-0">Workers</p>
                       <h5>{props.worker}</h5>
                     </div>
                   </Col>
-                  <Col xs="7">
+                  <Col xs="7" className="p-0">
                     <div>
                       <p className="text-muted mb-2 text-truncate">
                         Avg. Price

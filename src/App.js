@@ -20,8 +20,8 @@ function App() {
           <Categories />
         </div>
         } />
-        <Route exact path="/dashboard" element={
-          <div  style={{overflowX:"hidden"}}>
+        <Route exact path="/workerdash" element={
+          <div className="mt-5 py-5" style={{overflowX:"hidden"}}>
           <Workerside />
         </div>
         } />
