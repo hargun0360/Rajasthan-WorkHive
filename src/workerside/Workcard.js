@@ -1,14 +1,14 @@
 import React from 'react'
 
-import { Col, Card, CardBody } from "reactstrap"
+import { Col, Card, CardBody , Row} from "reactstrap"
 
 export const Workcard = () => {
   return (
-    <div className='d-flex w-100'>
-    <div className='d-flex'>
+   
         <React.Fragment >
+          <Row className='d-flex' style={{justifyContent:"center"}} >
           
-        <Card style={{width:"380px"}} className="mx-3"> 
+        <Card style={{width:"450px"}} className="mx-3"> 
             <CardBody>
               <div className="d-flex align-items-center mb-3">
                 <div className="avatar-xs me-3">
@@ -39,7 +39,7 @@ export const Workcard = () => {
               </div>
               <div className="text-muted mt-4">
                 <h4>
-                  12,000 {" "}
+                ₹12,000 {" "}
                 </h4>
                 <div className="d-flex">
                   
@@ -59,7 +59,7 @@ export const Workcard = () => {
               </div>
               <div className="text-muted mt-4">
                 <h4>
-                  1300 / month{" "}
+                ₹1300 / month{" "}
                 </h4>
                 <div className="d-flex">
                   {/* <span
@@ -75,9 +75,8 @@ export const Workcard = () => {
               </div>
             </CardBody>
           </Card>
-       
+          </Row>
         </React.Fragment>
-    </div>
-    </div>
+
   )
 }

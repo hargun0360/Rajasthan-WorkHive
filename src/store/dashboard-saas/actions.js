@@ -5,15 +5,15 @@ import {
     GET_EARNING_DATA
 } from "./actionType";
 
-export const apiSuccess = (actionType, data) => ({
-    type: API_SUCCESS,
-    payload: { actionType, data },
-});
+// export const apiSuccess = (actionType, data) => ({
+//     type: API_SUCCESS,
+//     payload: { actionType, data },
+// });
 
-export const apiFail = (actionType, error) => ({
-    type: API_FAIL,
-    payload: { actionType, error },
-});
+// export const apiFail = (actionType, error) => ({
+//     type: API_FAIL,
+//     payload: { actionType, error },
+// });
 
 // charts data
 export const getTopSellingProduct = (month) => ({

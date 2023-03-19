@@ -27,13 +27,13 @@ export const Workerdet = () => {
   
     return (
       <React.Fragment>
-        <Row>
-          <Col lg="12">
-            <Card>
+        <Row className="d-flex" style={{justifyContent : "center"}}>
+          <Col lg="11">
+            <Card  >
               <CardBody>
                 <Row>
-                  <Col lg="4">
-                    <div className="d-flex">
+                  <Col lg="5">
+                    <div className='row row-cols-lg-auto g-3 align-items-center d-flex'>
                       <div className="me-3">
                         <img
                           src={avatar1}
@@ -51,7 +51,7 @@ export const Workerdet = () => {
                     </div>
                   </Col>
   
-                  <Col lg="4" className="align-self-center">
+                  <Col lg="5" className="align-self-center">
                     <div className="text-lg-center mt-4 mt-lg-0">
                       <Row>
                         <Col xs="4">
@@ -82,22 +82,9 @@ export const Workerdet = () => {
                     </div>
                   </Col>
   
-                  <Col lg="4" className="d-none d-lg-block">
-                    <div className="clearfix mt-4 mt-lg-0">
-                      <Dropdown
-                        isOpen={settingsMenu}
-                        toggle={toggleSettings}
-                        className="float-end"
-                      >
-                        <DropdownToggle tag="button" className="btn btn-primary">
-                          <i className="bx bxs-cog align-middle me-1" /> Update
-                        </DropdownToggle>
-                        <DropdownMenu className="dropdown-menu-end">
-                          <DropdownItem href="#">Address </DropdownItem>
-                          <DropdownItem href="#">Skills</DropdownItem>
-                          <DropdownItem href="#">Experience</DropdownItem>
-                        </DropdownMenu>
-                      </Dropdown>
+                  <Col lg="2" className="d-none d-lg-block">
+                    <div className="clearfix mt-5 mt-lg-3 mx-5">
+                      <button className='btn btn-primary md'> Update</button>
                     </div>
                   </Col>
                 </Row>
