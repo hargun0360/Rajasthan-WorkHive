@@ -5,14 +5,22 @@ import { Routes, Route } from 'react-router-dom'
 import Workerside from "./workerside/Workerside";
 import Places from "./Pages/Places";
 import Store_detail from "./Pages/Store_detail";
+import Login from "./Pages/Auth/Login";
 
 
 function App() {
   return (
     <div className="App">
-        <Navbar />
-     
+        
+
         <Routes>
+
+        <Route exact path="/login" element={
+          
+          <Login />
+        
+        } />
+
         <Route exact path="/" element={
           <div className="mt-5 py-5" style={{overflowX:"hidden"}}>
           <Categories />

@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import images from "../assets/images";
 import companies from "../assets/images/companies";
+import Navbar from "../Components/Navbar";
 
 const Places = props => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const projects = [{id:1,img:2,description:"hello",team:[]},
 
   return (
     <React.Fragment>
+        <Navbar />
       <div>
        
         <Container >

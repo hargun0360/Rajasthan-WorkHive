@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CardShop from '../Components/Cards/CardShop'
 import driver from "../assets/images/driver.png"
 import { geoLocation } from './geoLocation'
+import Navbar from '../Components/Navbar' 
 import { getNearbyStore } from '../Services/ApiServices'
 
 import {
@@ -186,7 +187,9 @@ const Categories = () => {
   };
   
   const NOW_IN_MS = new Date().getTime();
-return (
+return (<>
+  <Navbar />
+  
 
   <Row className='px-4 mx-0'>
 
@@ -268,7 +271,7 @@ return (
     <CardShop Image={driver} name={"ticket system"} worker={ticket ? ticket.length : 0} />
 
   </Row>
-)
+  </>)
 }
 
 export default Categories

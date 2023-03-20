@@ -36,6 +36,7 @@ import ioClient from "socket.io-client"
 import { useSelector, useDispatch } from "react-redux"
 import { geoLocation } from "./geoLocation";
 import moment from "moment";
+import Navbar from "../Components/Navbar";
 
 const Store_detail = () => {    
 
@@ -118,6 +119,7 @@ const socket = ioClient.connect("http://192.168.137.67:3000/")
 
     return (
         <React.Fragment>
+            <Navbar />
           <div>
             
             <Container>
