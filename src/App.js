@@ -6,10 +6,12 @@ import Workerside from "./workerside/Workerside";
 import Places from "./Pages/Places";
 import Store_detail from "./Pages/Store_detail";
 
+
 function App() {
   return (
     <div className="App">
         <Navbar />
+     
         <Routes>
         <Route exact path="/" element={
           <div className="mt-5 py-5" style={{overflowX:"hidden"}}>
@@ -22,6 +24,11 @@ function App() {
         </div>
         } />
         <Route exact path="/place" element={
+          <div className="mt-5 py-5" style={{overflowX:"hidden"}}>
+          <Places />
+        </div>
+        } />
+        <Route exact path="/place/:name" element={
           <div className="mt-5 py-5" style={{overflowX:"hidden"}}>
           <Places />
         </div>

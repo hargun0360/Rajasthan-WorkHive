@@ -30,8 +30,12 @@ import {
   onAddComment as onAddCommentAction,
 } from "../store/actions"
 
+import ioClient from "socket.io-client"
+
 //redux
 import { useSelector, useDispatch } from "react-redux"
+import { geoLocation } from "./geoLocation";
+import moment from "moment";
 
 const Store_detail = () => {    
 
@@ -86,10 +90,30 @@ const product = [{
 //   }
 
 //   const imageShow = (img, id) => {
-//     const expandImg = document.getElementById("expandedImg" + id)
+//        const expandImg = document.getElementById("expandedImg" + id)
 //     expandImg.src = img
 //   }
 
+const socket = ioClient.connect("http://192.168.137.67:3000/")
+
+
+    const latitude = localStorage.getItem("latitude")
+    const longitude = localStorage.getItem("longitude")
+
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        if(!latitude || !longitude){
+            geoLocation();
+        }else{
+            console.log(latitude , longitude);
+            socket.emit("join", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5MTE4ODgyNTE3Iiwic3ViIjoiVXNlciIsImV4cCI6MTY3OTYwMTQ3N30.fipVJRuBudDA4m8ukz2vMFc4mhelnqwK7tkHhO-nEA4", 3, latitude, longitude);
+        }
+        socket.on("queue", (data) => {
+            console.log(JSON.stringify(data))
+        })
+        
+    }
   
 
     return (
@@ -174,7 +198,7 @@ const product = [{
                         </Row>
                         <Row className="d-flex justify-content-end">
                             
-                            <button className="btn btn-primary" style={{width:"fit-content"}}>
+                            <button onClick={handleClick} className="btn btn-primary" style={{width:"fit-content"}}>
                                 Join in Queue
                             </button>
                         </Row>

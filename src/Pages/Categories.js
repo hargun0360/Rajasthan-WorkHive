@@ -7,19 +7,17 @@ import { getNearbyStore } from '../Services/ApiServices'
 import {
   Card,
   Col,
-  Container,
   Row,
   CardBody,
   CardTitle,
-  Label,
-  Button,
-  Form,
-  Input,
-  InputGroup,
   Table,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Avg_time } from './Avg-time'
+import ioClient from "socket.io-client"
+import moment from 'moment'
+import { useCountdown } from './Countdown'
+import DateTimeDisplay from './DateTimeDisplay';
 
 const Categories = () => {
   const [productList, setproductList] = useState([]);
@@ -34,6 +32,10 @@ const Categories = () => {
 
   const latitude = localStorage.getItem("latitude");
   const longitude = localStorage.getItem("longitude");
+
+ const socket = ioClient.connect("http://192.168.137.67:3000/")
+
+
 
   useEffect(() => {
     if (!latitude && !longitude) {
@@ -75,7 +77,7 @@ const Categories = () => {
   useEffect(() => {
    
     if(avgPer){
-      console.log(avgPer);
+      // console.log(avgPer);
     }
 
   }, [avgPer ])
@@ -84,7 +86,7 @@ const Categories = () => {
   useEffect(() => {
     if(productList && productList.length > 0 && avgPer.length>0){
       productList.forEach((item,ind) => {
-        a.push(Avg_time(item.customers, "7207665893" , avgPer[ind]));
+        a.push(Avg_time(item.customers, "6929999929" , avgPer[ind]));
     })
       setAvg(a);
     }
@@ -93,7 +95,7 @@ const Categories = () => {
   useEffect(() => {
    
     if(a){
-      console.log(a);
+      // console.log(a);
     }
 
   }, [a])
@@ -131,20 +133,55 @@ const Categories = () => {
   }, [])
 
   
+  const [timer,setTimer] = useState(0)
 
   // console.log(nearStore);
 
   function removeCartItem(id) {
-    var filtered = productList.filter(function (item) {
-      return item.id !== id;
-    });
-
-    setproductList(filtered);
+    socket.emit("leave", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5MTE4ODgyNTE3Iiwic3ViIjoiVXNlciIsImV4cCI6MTY3OTYwMTQ3N30.fipVJRuBudDA4m8ukz2vMFc4mhelnqwK7tkHhO-nEA4", 1)
+    socket.on("queue", (data) => {
+      console.log(JSON.stringify(data))
+  })
   }
 
+  
+  const ShowCounter = ({ days, hours, minutes, seconds }) => {
+    return (
+      <div className="show-counter">
+        <a
+          href="https://tapasadhikary.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="countdown-link"
+        >
+          <DateTimeDisplay value={days} type={'Days'} isDanger={days <= 3} />
+          <p>:</p>
+          <DateTimeDisplay value={hours} type={'Hours'} isDanger={false} />
+          <p>:</p>
+          <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
+          <p>:</p>
+          <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
+        </a>
+      </div>
+    );
+  };
 
-
-
+  const CountdownTimer = ({ targetDate }) => {
+    const [days, hours, minutes, seconds] = useCountdown(targetDate);
+  
+   
+      return (
+        <ShowCounter
+          days={days}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />
+      );
+    
+  };
+  
+  const NOW_IN_MS = new Date().getTime();
 return (
 
   <Row className='px-4 mx-0'>
@@ -195,7 +232,7 @@ return (
                     </td>
                       <td>{product.counters}</td>
                     
-                    <td>{avg && avg.length > 0 ? avg[ind] : null}</ td>
+                    <td>{avg && avg.length > 0 ? <CountdownTimer targetDate={ (avg[ind] * 60 * 1000) + NOW_IN_MS  } /> : null}</ td>
                     <td>
                       <Link
                         to="#"
