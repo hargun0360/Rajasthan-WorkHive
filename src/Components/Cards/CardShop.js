@@ -1,11 +1,29 @@
-import React from "react"
+import React , {useState , useEffect} from "react"
 import { Link } from "react-router-dom"
 import { Card, Col, Row } from "reactstrap"
+import { geoLocation } from "../../Pages/geoLocation"
+import { getNearbyStore } from "../../Services/ApiServices"
+import { useNavigate } from "react-router-dom"
+import { BASE_URL } from "../../Services/ApiUrls"
 
 const CardShop = props => {
 
   const imgsrc = props.Image
-  
+  const name = props.name
+
+
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+      if(name == "Hospital"){
+        navigate("/hospital");
+      }else if(name == "Govt. Office"){
+        navigate("/gov")
+      }else if(name == "Bank"){
+        navigate("/bank") 
+      }
+  } 
+
  
   return (
     <React.Fragment>
@@ -26,27 +44,20 @@ const CardShop = props => {
               <div className="p-2 mt-2 text-center text-xl-start">
                 <Row>
                 <Row >
-                    <div>
+                    <div style={{margin : "0" , padding:"0"}}>
                       <h5 className="text-muted mb-2 text-truncate">{props.name}</h5>
                     </div>
                   </Row>
-                  <Col xs="5" className="p-0">
+                  <Col xs="12" className="p-0">
                     <div>
-                      <p className="text-muted mb-2 text-truncate p-0">Workers</p>
+                      <p className="text-muted mb-2 text-truncate p-0">Number of {props.name}</p>
                       <h5>{props.worker}</h5>
                     </div>
                   </Col>
-                  <Col xs="7" className="p-0">
-                    <div>
-                      <p className="text-muted mb-2 text-truncate">
-                        Avg. Price
-                      </p>
-                      <h5>{props.expected}</h5>
-                    </div>
-                  </Col>
+                  
                 </Row>
-                <div className="mt-2">
-                  <Link to="/worker" className="text-decoration-underline text-reset">More info <i className="mdi mdi-arrow-right"></i></Link>
+                <div className="mt-1 mb-1" style={{marginLeft : "-12px" , padding:"0"}}>
+                  <p style={{margin:"0" , padding : "0" , cursor : "pointer"}} onClick={handleClick} className="text-decoration-underline text-reset">More info <i className="mdi mdi-arrow-right"></i></p>
                 </div>
               </div>
             </Col>

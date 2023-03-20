@@ -1,19 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import CardShop from '../Components/Cards/CardShop'
 import driver from "../assets/images/driver.png"
-import carpenter from "../assets/images/carpenter.png"
-import catering from "../assets/images/catering.png"
-import deliveyMan from "../assets/images/delivery-man.png"
-import deliveryTruck from "../assets/images/delivery-truck.png"
-import electrician from "../assets/images/electrician.png"
-import maid from "../assets/images/maid.png"
-import massage from "../assets/images/massage.png"
-import painter from "../assets/images/painter.png"
-import photographer from "../assets/images/photographer.png"
-import plumber from "../assets/images/plumber.png"
-import rent from "../assets/images/rent.png"
+import { geoLocation } from './geoLocation'
+import { getNearbyStore } from '../Services/ApiServices'
 
-import {   
+import {
   Card,
   Col,
   Container,
@@ -25,80 +16,218 @@ import {
   Form,
   Input,
   InputGroup,
+  Table,
 } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Avg_time } from './Avg-time'
 
 const Categories = () => {
-  return (
-    <Row>
-        <Row className='px-4 mx-0'>
-            <Col lg={12}>
-              <Card>
-                <CardBody>
-                  <CardTitle className="h5 mb-4">Find Local Workers</CardTitle>
+  const [productList, setproductList] = useState([]);
+  const [nearStore, setNearStore] = useState([]);
+  const [bank, setBank] = useState([]);
+  const [gov, setGov] = useState([]);
+  const [hospital, setHospital] = useState([]);
+  const [customers, setCustomers] = useState([]);
+  const [counter , setCounter]  = useState([])
+  const [avg , setAvg] = useState([]);
+  const [avgPer , setAvgPer] = useState([])
 
-                  <Form className="row row-cols-lg-auto g-3 align-items-center d-flex" style={{justifyContent:"space-evenly"}}>
-                      <Col lg={3}>
-                        <div className="mb-3">
-                          <Label htmlFor="formrow-InputState">State</Label>
-                          <select
-                            id="formrow-InputState"
-                            className="form-control"
-                          >
-                            <option defaultValue>Choose...</option>
-                            <option>...</option>
-                          </select>
-                        </div>
-                      </Col>
-                      <Col lg={3}>
-                        <div className="mb-3">
-                          <Label htmlFor="formrow-InputCity">City</Label>
-                          <Input
-                            type="text"
-                            className="form-control"
-                            id="formrow-InputCity"
-                            placeholder="Enter Your Living City"
-                          />
-                        </div>
-                      </Col>
+  const latitude = localStorage.getItem("latitude");
+  const longitude = localStorage.getItem("longitude");
 
-                      <Col lg={3}>
-                        <div className="mb-3">
-                          <Label htmlFor="formrow-InputZip">Pin Code</Label>
-                          <Input
-                            type="text"
-                            className="form-control"
-                            id="formrow-InputZip"
-                            placeholder="Enter Your Area Pin Code"
-                          />
-                        </div>
-                      </Col>
-                      <Col>
-                     
-                      <button type="submit" className="btn btn-primary w-md">
-                        Find Local Workers
-                      </button>
+  useEffect(() => {
+    if (!latitude && !longitude) {
+      geoLocation();
+    }
+  }, [])
+  useEffect(() => {
+      setAvg(localStorage.getItem("avg"))
+  }, [localStorage.getItem("avg")]);
 
-                      </Col>
-                  </Form>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        <CardShop Image = {driver} name = "Driver" worker = "15" expected = "₹1200" />
-        <CardShop Image = {carpenter} name = "Mistri" worker = "15" expected = "₹1200" />
-        <CardShop Image = {catering} name = "Catering" worker = "15" expected = "₹1200" />
-        <CardShop Image = {deliveyMan} name = "Delivery Man" worker = "15" expected = "₹1200" />
-        <CardShop Image = {deliveryTruck} name = "Delivery Truck" worker = "15" expected = "₹1200" />
-        <CardShop Image = {electrician} name = "Electrician" worker = "15" expected = "₹1200" />
-        <CardShop Image = {maid} name = "Maid" worker = "15" expected = "₹1200" />
-        <CardShop Image = {massage} name = "Massage" worker = "15" expected = "₹1200" />
-        <CardShop Image = {painter} name = "Painter" worker = "15" expected = "₹1200" />
-        <CardShop Image = {photographer} name = "Photographer" worker = "15" expected = "₹1200" />
-        <CardShop Image = {plumber} name = "Plumber" worker = "15" expected = "₹1200" />
-        <CardShop Image = {rent} name = "Rent" worker = "15" expected = "₹1200" />
+  let arr = [];
+  useEffect(() => {
+    if(productList && productList.length > 0){
+      productList.forEach((item) => {
+       arr.push(item.customers.join().split(","))
+    })
+      setCustomers(arr);
+    }
 
-    </Row>
-  )
+  }, [productList])
+ 
+  // useEffect(() => {
+   
+  //   if(arr){
+  //     console.log(arr);
+  //   }
+
+  // }, [arr])
+  let b = [];
+  useEffect(() => {
+    if(productList && productList.length > 0){
+      productList.forEach((item) => {
+        b.push(item.avg_time_per_person);
+    })
+      setAvgPer(b);
+    }
+  },[productList])
+
+  useEffect(() => {
+   
+    if(avgPer){
+      console.log(avgPer);
+    }
+
+  }, [avgPer ])
+
+  let a = [];
+  useEffect(() => {
+    if(productList && productList.length > 0 && avgPer.length>0){
+      productList.forEach((item,ind) => {
+        a.push(Avg_time(item.customers, "7207665893" , avgPer[ind]));
+    })
+      setAvg(a);
+    }
+  },[productList , avgPer])
+
+  useEffect(() => {
+   
+    if(a){
+      console.log(a);
+    }
+
+  }, [a])
+
+  
+
+
+
+  // useEffect(() => {
+  //     if(counter){
+  //       console.log(counter);
+  //     }
+  // },[counter])
+
+  useEffect(() => {
+    if (!latitude && !longitude) {
+      geoLocation();
+    } else {
+      let obj = {
+        latitude: parseFloat(latitude),
+        longitude: parseFloat(longitude)
+      }
+      getNearbyStore(obj)
+        .then((res) => {
+          console.log(res);
+          setNearStore(res.data.near_stores);
+          setproductList(res.data.joined_stores)
+          setBank(res.data.bank_stores)
+          setGov(res.data.govt_office_stores)
+          setHospital(res.data.hospital_stores)
+        }).catch((err) => {
+          console.log(err);
+        })
+    }
+  }, [])
+
+  
+
+  // console.log(nearStore);
+
+  function removeCartItem(id) {
+    var filtered = productList.filter(function (item) {
+      return item.id !== id;
+    });
+
+    setproductList(filtered);
+  }
+
+
+
+
+return (
+
+  <Row className='px-4 mx-0'>
+
+
+    <Col lx="8">
+      <Card>
+        <CardTitle className='mx-4 py-2 mt-3' >Queues Joined</CardTitle>
+        <CardBody>
+          <div className="table-responsive">
+            <Table className="table align-middle mb-0 table-nowrap">
+              <thead className="table-light">
+                <tr style={{ textAlign: "center" }}>
+                  <th>Place</th>
+                  <th>Location</th>
+                  <th>Number of Customers</th>
+                  <th>Number of Counters</th>
+                  <th >Average Time</th>
+                  <th>Leave Queue</th>
+                </tr>
+              </thead>
+              <tbody>
+                {productList && productList.length > 0 ? productList.map((product,ind) => (
+                  <tr key={product.id} style={{ textAlign: "center" }}>
+                    <td>
+                      <img
+                        src={product.profile_pic}
+                        alt="product-img"
+                        title="product-img"
+                        className="avatar-md"
+                      />
+                    </td>
+                    <td>
+                      <h5 className="font-size-14 text-truncate">
+                        <Link
+                          to={"/ecommerce-product-detail/" + product.id}
+                          className="text-dark"
+                        >
+                          {product.name}
+                        </Link>
+                      </h5>
+
+                    </td>
+                    <td>
+                    {customers && customers.length ?  (
+                       customers[ind].length
+                    ) : null}
+                    </td>
+                      <td>{product.counters}</td>
+                    
+                    <td>{avg && avg.length > 0 ? avg[ind] : null}</ td>
+                    <td>
+                      <Link
+                        to="#"
+                        onClick={() => removeCartItem(product.id)}
+                        className="action-icon text-danger"
+                      >
+                        {" "}
+                        <i className="mdi mdi-trash-can font-size-18" />
+                      </Link>
+                    </td>
+                  </tr>
+                )) : null}
+              </tbody>
+            </Table>
+          </div>
+        </CardBody>
+      </Card>
+    </Col>
+
+
+    <div className='mx-3  py-2 mb-2'>
+      <h4> Nearby Places </h4>
+    </div>
+
+    <CardShop Image={driver} name={"Bank"} worker={bank ? bank.length : 0} />
+    <CardShop Image={driver} name={"Govt. Office"} worker={gov ? gov.length : 0} />
+    <CardShop Image={driver} name={"Hospital"} worker={hospital ? hospital.length : 0} />
+
+  </Row>
+)
 }
 
 export default Categories
+
+

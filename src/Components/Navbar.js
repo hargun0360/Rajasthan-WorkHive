@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 // import 'react-drawer/lib/react-drawer.css';
 // reactstrap
@@ -19,19 +19,39 @@ const Navbar = (props) => {
     const [menu, setMenu] = useState(false);
     const [isSearch, setSearch] = useState(false);
 
+    const [latitude , setLatitude]  = useState(null);
+    const [longitude , setLongitude]  = useState(null);
+
+    const geoLocation = () => {
+        if (navigator.geolocation) {
+           navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            alert( "Geolocation is not supported by this browser.");
+          }
+    }
+
+    function showPosition(position) {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      }
+
+      useEffect(()=>{
+        geoLocation();
+      },[])
+
     return (<>
         <header id="page-topbar" style={{ left: "0" , display:"flex" , justifyContent:"space-between" , width:"100vw" }}>
             <div className="navbar-header" >
                 <div className="d-flex mx-5">
 
                     <form className="app-search d-none d-lg-block">
-                        <div className="position-relative">
+                        <div className="position-relative" onClick={geoLocation}>
                             <input
-                                type="text"
+                                type="button"
                                 className="form-control"
-                                placeholder="Search..."
+                                value={"Get Current Location"}
                             />
-                            <span className="bx bx-search-alt" />
+                            <span className="bx bxs-map-pin" />
                         </div>
                     </form>
                     <Dropdown
@@ -151,7 +171,7 @@ const Navbar = (props) => {
 
                 <div className='d-flex' style={{width:"65vw" , justifyContent:"right"}}>
 
-                    <div className='d-flex' style={{alignItems:"center" , marginRight:"15px" , cursor:"pointer"}}> Booking History</div>
+                    <div className='d-flex' style={{alignItems:"center" , marginRight:"15px" , cursor:"pointer"}}> Queue History</div>
 
                     <div className=''>
                         <NotificationDropdown />
