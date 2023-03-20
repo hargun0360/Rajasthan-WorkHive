@@ -26,6 +26,8 @@ const Categories = () => {
   const [gov, setGov] = useState([]);
   const [hospital, setHospital] = useState([]);
   const [customers, setCustomers] = useState([]);
+  const [registration, setRegistration] = useState([]);
+  const [ticket, setTicket] = useState([]);
   const [counter , setCounter]  = useState([])
   const [avg , setAvg] = useState([]);
   const [avgPer , setAvgPer] = useState([])
@@ -125,6 +127,8 @@ const Categories = () => {
           setproductList(res.data.joined_stores)
           setBank(res.data.bank_stores)
           setGov(res.data.govt_office_stores)
+          setRegistration(res.data.reg_camp_stores)
+          setTicket(res.data.ticket_system_stores)
           setHospital(res.data.hospital_stores)
         }).catch((err) => {
           console.log(err);
@@ -260,6 +264,8 @@ return (
     <CardShop Image={driver} name={"Bank"} worker={bank ? bank.length : 0} />
     <CardShop Image={driver} name={"Govt. Office"} worker={gov ? gov.length : 0} />
     <CardShop Image={driver} name={"Hospital"} worker={hospital ? hospital.length : 0} />
+    <CardShop Image={driver} name={"Registration Camps"} worker={registration ? registration.length : 0} />
+    <CardShop Image={driver} name={"ticket system"} worker={ticket ? ticket.length : 0} />
 
   </Row>
 )

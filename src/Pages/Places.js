@@ -20,6 +20,9 @@ import CardProject from "./card-project";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 
+import images from "../assets/images";
+import companies from "../assets/images/companies";
+
 const Places = props => {
   const dispatch = useDispatch();
 
@@ -50,7 +53,7 @@ const projects = [{id:1,img:2,description:"hello",team:[]},
        
         <Container >
          
-          <Breadcrumbs title="Projects" breadcrumbItem="Projects Grid" />
+          <Breadcrumbs breadcrumbItem="Nearby Places" />
 
           <Row>
            

@@ -16,11 +16,15 @@ const CardShop = props => {
 
   const handleClick = () => {
       if(name == "Hospital"){
-        navigate("/hospital");
+        navigate("/place/hospital");
       }else if(name == "Govt. Office"){
-        navigate("/gov")
+        navigate("/place/gov")
       }else if(name == "Bank"){
-        navigate("/bank") 
+        navigate("/place/bank") 
+      }else if(name == "Registration Camps"){
+        navigate("/place/reg") 
+      }else if(name == "ticket system"){
+        navigate("/place/ticket") 
       }
   } 
 

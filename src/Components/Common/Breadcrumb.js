@@ -14,9 +14,9 @@ const Breadcrumb = props => {
               <BreadcrumbItem>
                 <Link to="#">{props.title}</Link>
               </BreadcrumbItem>
-              <BreadcrumbItem active>
+              {/* <BreadcrumbItem active>
                 <Link to="#">{props.breadcrumbItem}</Link>
-              </BreadcrumbItem>
+              </BreadcrumbItem> */}
             </ol>
           </div>
         </div>
